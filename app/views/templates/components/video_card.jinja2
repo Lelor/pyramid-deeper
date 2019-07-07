@@ -1,0 +1,47 @@
+<div class="video-card">
+    <div class="image-wrapper">
+        <img src="{{request.static_url('app:static/img/play.png')}}">
+    </div>
+    <div class="video-info">
+        <div class="description-box">
+            <div class="title">
+                <h3>{{video.title}}</h3>
+                <p>{{video.theme}}</p>
+            </div>
+            <p>{{ video.description }}</p>
+        </div>
+        {% if evaluation %}
+            <div class="evaluation">
+                <i id="like-{{video._id}}" class="far fa-thumbs-up"> {{ video.likes }}</i>
+                <i id="dislike-{{video._id}}" class="far fa-thumbs-down"> {{ video.dislikes }}</i>    
+            </div>
+        {% else %}
+            <div class="evaluation">
+                <p>Video score: {{video.score}}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    function evaluateVideo(_id, positive){
+        fetch('/evaluate', {
+            method: 'post',
+            body: JSON.stringify({
+                _id: _id,
+                positive: positive
+            })
+        }).then(response => {
+            console.log(response)
+        });
+    }
+
+    document.getElementById("like-{{video._id}}").addEventListener('click', () => {
+        evaluateVideo("{{video._id}}", true)
+        document.getElementById("like-{{video._id}}").innerText = ` ${parseInt(document.getElementById("like-{{video._id}}").innerText)+1}`
+    })
+
+    document.getElementById("dislike-{{video._id}}").addEventListener('click', () => {
+        evaluateVideo("{{video._id}}", false)
+        document.getElementById("dislike-{{video._id}}").innerText = ` ${parseInt(document.getElementById("dislike-{{video._id}}").innerText)+1}`
+    })
+</script>

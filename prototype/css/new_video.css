@@ -1,0 +1,43 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+}
+
+
+.form-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+    align-content: space-around;
+    width: 60%;
+    height: 500px;
+    margin-top: 70px;
+    border-radius: 20px;
+    background-color: #e6e6e6;
+}
+
+form{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 30px;
+}
+
+form>button{
+    margin-top: 30px;
+    width: 50%;
+    align-self: center;
+    background-color: lightgreen;
+    color: black;
+}
+
+
+form>button:hover{
+    color: white;
+}

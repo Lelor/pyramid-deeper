@@ -1,0 +1,31 @@
+{% extends "base.jinja2" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{request.static_url('app:static/css/home.css')}}">
+<link rel="stylesheet" type="text/css" href="{{request.static_url('app:static/css/trending.css')}}">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<h2>Trending</h3>
+<h3>Browse themes</h3>
+<form action="/trending" method="post">
+    <select name="theme" id="theme" class="form-control">
+        <option>All</option>
+        {% for theme in themes %}
+            <option {% if theme.text == selected %}selected='selected'{% endif %}>{{theme.text}}</option>
+        {% endfor %}
+        <option>Another</option>
+    </select>
+    <button type="submit" class="btn btn-default">Search</button>
+</form>
+<div class="video-container">
+    {% for video in videos %}
+        {% include 'components/video_card.jinja2' %}
+    {%else%}
+        <p>No videos were found</p>
+    {% endfor %}
+</div>
+{% endblock %} 

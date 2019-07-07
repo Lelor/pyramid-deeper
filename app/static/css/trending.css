@@ -1,0 +1,10 @@
+form{
+    display: flex;
+    justify-content: space-between
+}
+
+form>button {
+    width: 100px;
+    height: 40px;
+    margin-left: 20px;
+}

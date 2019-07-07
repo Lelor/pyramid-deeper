@@ -1,0 +1,7 @@
+marshmallow
+pyramid
+pyramid_jinja2
+pymongo
+waitress
+pyramid_debugtoolbar
+webtest
