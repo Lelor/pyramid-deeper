@@ -79,7 +79,7 @@ def trending_on_theme(db, theme):
                 'likes': '$likes',
                 'dislikes': '$dislikes',
                 'date': '$date',
-                'score': {'$sum': [{'$divide': ['$dislikes', 2]}, '$likes']}
+                'score': {'$subtract': ['$likes', {'$divide': ['$dislikes', 2]}]}
             }
         },
         {
